@@ -54,7 +54,7 @@
         // [컨테이너 - 라운드 적용]
         const container = document.createElement('div');
         // 가로 1000, 세로 700 고정 (혹은 80% 등으로 유동적 조절 가능)
-        container.style.cssText = "width:1280px; height:700px; background:white; border-radius:15px; position:relative; overflow:hidden; box-shadow:0 0 20px rgba(0,0,0,0.3);";
+        container.style.cssText = "width:800px; height:700px; background:white; border-radius:15px; position:relative; overflow:hidden; box-shadow:0 0 20px rgba(0,0,0,0.3);";
 
         // [X 버튼]
         const closeBtn = document.createElement('button');
