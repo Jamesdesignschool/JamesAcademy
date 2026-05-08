@@ -29,7 +29,7 @@ const linkMapping = {
     'Link_main': './main.html',  // 3ds Max 이름 : URL
 
     'Link_vr_ar':           './vr_ar.html',
-    'Link_Editorial5':      './Editorial.html',
+    'Link_Editorial5':      './editorial.html',
     'Link_game_engine':     './game_engine.html',
     'Link_character':       './character.html',
     'Link_interior':        './interior.html',
