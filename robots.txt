@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-Disallow: /admin/
-Disallow: /private/
-Disallow: /tmp/
-
 Sitemap: https://jamesacademy.co.kr/sitemap.xml
