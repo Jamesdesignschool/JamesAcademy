@@ -16,8 +16,8 @@
 
 
 <script>
-    // 화면 너비가 768px 미만일 경우 모바일로 판단
-    if (window.innerWidth < 768 || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    // 화면 너비 체크는 빼고, 기기 정보(UserAgent)만 확인
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         window.location.href = "indexm.html";
     }
 </script>

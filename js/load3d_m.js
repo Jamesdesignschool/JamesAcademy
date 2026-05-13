@@ -12,20 +12,20 @@ const scene = new THREE.Scene();
 let clickableObjects = []; 
 
 const linkMapping = {
-    'Link_main': './main.html',
-    'Link_vr_ar': './vr_ar.html',
-    'Link_Editorial5': './editorial.html',
-    'Link_game_engine': './game_engine.html',
-    'Link_character': './character.html',
-    'Link_interior': './interior.html',
-    'Link_film': './film.html',
-    'Link_system': './system.html'
+    'Link_main': './m_main.html',
+    'Link_vr_ar': './m_vr_ar.html',
+    'Link_Editorial5': './m_editorial.html',
+    'Link_game_engine': './m_game_engine.html',
+    'Link_character': './m_character.html',
+    'Link_interior': './m_interior.html',
+    'Link_film': './m_film.html',
+    'Link_system': './m_system.html'
 };
 
 scene.background = new THREE.Color(0x869091);
 
 const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 2000);
-camera.position.set(0, 1.8, 2);
+camera.position.set(0, 2.8, 7);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -41,20 +41,20 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;      // [수정] 수치를 낮춰서 더 쫀득하고 부드럽게 (0.15 -> 0.05)
 
 // 줌(두 손가락 벌리기) 설정
-controls.enableZoom = true;         
+// controls.enableZoom = true;         
 controls.zoomSpeed = 2.0;           // [수정] 모바일 대응을 위해 속도 상향 (1.5 -> 2.0)
 
 // 패닝(두 손가락 이동) 설정
-controls.enablePan = true;          
+// controls.enablePan = true;          
 controls.panSpeed = 1.2;            // [수정] 패닝이 너무 튀지 않게 적정값 조절
-controls.screenSpacePanning = true; // [필수] 카메라 시점 기준으로 직관적 이동
+// controls.screenSpacePanning = true; // [필수] 카메라 시점 기준으로 직관적 이동
 
 // 거리 및 각도 제한 (이게 없으면 모델이 사라질 수 있음)
-controls.minDistance = 1;           
-controls.maxDistance = 100;         
+controls.minDistance = 7;           
+controls.maxDistance = 10;         
 controls.maxPolarAngle = Math.PI / 2; // 바닥 아래로 카메라가 못 내려가게 제한
 
-controls.target.set(0, 0.9, 0.02);
+controls.target.set(0, 0.1, 0.02);
 
 // --- 조명 및 바닥 ---
 const ambientLight = new THREE.AmbientLight(0x869091, 3.1); 
@@ -186,6 +186,24 @@ renderer.domElement.addEventListener('pointerup', (e) => {
     }
 });
 
+
+// --- 타겟 가이드 생성 ---
+const guideGeometry = new THREE.SphereGeometry(0.5, 16, 16); // 크기는 작게 설정
+const guideMaterial = new THREE.MeshBasicMaterial({ 
+    color: 0x00ff00, // 형광 초록색
+    transparent: true,
+    opacity: 0.8
+});
+const targetGuide = new THREE.Mesh(guideGeometry, guideMaterial);
+scene.add(targetGuide);
+
+// (선택 사항) 더 "빛나는" 느낌을 주려면 포인트 라이트를 추가하세요
+const targetLight = new THREE.PointLight(0x00ff00, 1, 2);
+scene.add(targetLight);
+
+
+
+
 // --- 팝업 및 기타 함수 ---
 function openHtmlPopup(url) {
     const existing = document.getElementById('three-html-popup');
@@ -197,7 +215,7 @@ function openHtmlPopup(url) {
     overlay.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:99999; display:flex; justify-content:center; align-items:center;";
     
     const container = document.createElement('div');
-    container.style.cssText = "width:90%; max-width:1280px; height:80%; background:white; border-radius:10px; position:relative; overflow:hidden;";
+    container.style.cssText = "width:96%; max-width:1280px; height:90%; background:white; border-radius:10px; position:relative; overflow:hidden;";
 
     const closeBtn = document.createElement('button');
     closeBtn.innerHTML = '✕';
@@ -215,13 +233,32 @@ function openHtmlPopup(url) {
     overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
 }
 
+// HTML 어딘가에 좌표를 표시할 div가 있다고 가정: <div id="ui-target"></div>
+
 function animate() {
     requestAnimationFrame(animate);
     const delta = clock.getDelta();
     mixers.forEach(m => m.update(delta));
+
+    // 1. 컨트롤 업데이트 (사용자의 입력값을 먼저 반영)
     controls.update();
-    
-    if (camera.position.y < 0.1) camera.position.y = 0.1;
+
+    // 2. [핵심] 타겟의 Y값을 원하는 높이로 강제 고정
+    // 바닥에 완전히 붙이고 싶다면 0, 약간 띄우고 싶다면 0.1 등을 입력하세요.
+    const fixedY = 0; 
+    if (controls.target.y !== fixedY) {
+        controls.target.y = fixedY;
+    }
+
+    // 3. (선택) 가이드 오브젝트(스피어) 위치 동기화
+    if (targetGuide) {
+        targetGuide.position.copy(controls.target);
+    }
+
+    // 4. (추가 보정) 카메라 자체도 바닥 아래로 내려가지 않도록 제한
+    if (camera.position.y < 0.1) {
+        camera.position.y = 0.1;
+    }
 
     renderer.render(scene, camera);
 }
