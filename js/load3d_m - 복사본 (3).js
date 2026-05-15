@@ -211,6 +211,7 @@ function openHtmlPopup(url) {
 
     const overlay = document.createElement('div');
     overlay.id = 'three-html-popup';
+    // 모바일 대응: container 너비를 90% 등으로 유연하게 설정
     overlay.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:99999; display:flex; justify-content:center; align-items:center;";
     
     const container = document.createElement('div');
@@ -219,17 +220,7 @@ function openHtmlPopup(url) {
     const closeBtn = document.createElement('button');
     closeBtn.innerHTML = '✕';
     closeBtn.style.cssText = "position:absolute; top:15px; right:15px; background:white; border:none; font-size:25px; cursor:pointer; z-index:10; width:40px; height:40px; border-radius:50%; box-shadow:0 0 10px rgba(0,0,0,0.2);";
-    
-    // 닫기 함수 정의
-    const closePopup = () => {
-        overlay.remove();
-        window.removeEventListener('popstate', closePopup); // 이벤트 제거
-        if (window.history.state === 'popup') {
-            window.history.back(); // 가짜 기록 제거
-        }
-    };
-
-    closeBtn.onclick = closePopup;
+    closeBtn.onclick = () => overlay.remove();
 
     const iframe = document.createElement('iframe');
     iframe.src = url;
@@ -239,18 +230,7 @@ function openHtmlPopup(url) {
     container.appendChild(iframe);
     overlay.appendChild(container);
     document.body.appendChild(overlay);
-
-    // --- [핵심] 뒤로가기 제어 로직 ---
-    // 1. 현재 히스토리에 'popup' 상태를 추가 (페이지 이동은 안 일어남)
-    window.history.pushState('popup', null, null);
-
-    // 2. 사용자가 뒤로가기를 누르면 실행될 이벤트 등록
-    window.addEventListener('popstate', function onPopState(e) {
-        overlay.remove(); // 팝업 닫기
-        window.removeEventListener('popstate', onPopState); // 일회성이므로 제거
-    });
-
-    overlay.onclick = (e) => { if (e.target === overlay) closePopup(); };
+    overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
 }
 
 // HTML 어딘가에 좌표를 표시할 div가 있다고 가정: <div id="ui-target"></div>
