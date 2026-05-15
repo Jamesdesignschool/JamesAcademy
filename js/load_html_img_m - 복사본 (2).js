@@ -49,7 +49,7 @@
         overlay.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:20000; display:flex; justify-content:center; align-items:center;";
 
         const container = document.createElement('div');
-        container.style.cssText = "width:800px; height:600px; background:white; border-radius:15px; position:relative; overflow:hidden; box-shadow:0 0 20px rgba(0,0,0,0.3);";
+        container.style.cssText = "width:800px; height:700px; background:white; border-radius:15px; position:relative; overflow:hidden; box-shadow:0 0 20px rgba(0,0,0,0.3);";
 
         // --- [수정] 공통 닫기 함수 정의 ---
         const closePopup = () => {
@@ -69,7 +69,7 @@
         closeBtn.onmouseleave = () => { closeBtn.style.background = 'white'; };
 
         const iframe = document.createElement('iframe');
-        iframe.src = "m_email.html";
+        iframe.src = "email.html";
         iframe.style.cssText = "width:100%; height:100%; border:none;";
 
         container.appendChild(closeBtn);
