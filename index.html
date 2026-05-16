@@ -5,33 +5,53 @@
     <link rel="canonical" href="https://jamesacademy.co.kr/">
     <title>James Design Academy</title>
 
-    <meta name="description" content="대전 인테리어학원, 그래픽디자인학원, 건축학원, 캐릭터학원, 3D디자인 교육. 실무 중심 포트폴리오 제작 및 취업 과정 운영.">
+    <meta name="description" content="대전 인테리어학원, 대전 그래픽디자인학원, 대전 건축학원, 대전 캐릭터학원, 대전 3D디자인 교육, IoT 실무 중심 포트폴리오 제작 및 취업 과정 운영.">
 
     <style>
-        body { margin: 0; overflow: hidden; background-color: #f0f0f0; }
-        canvas { display: block; }
+        body { 
+            margin: 0; 
+            overflow: hidden; 
+            background-color: #f0f0f0; 
+        }
+        
+
+        canvas { 
+            display: block; 
+            position: relative;
+            z-index: 2; 
+        }
+
+        
+        .seo-footer {
+            position: absolute; 
+            bottom: 50px; 
+            left: 20px; 
+            color: #ffffff;
+            font-size: 14px; 
+            z-index: 1;
+            font-family: sans-serif;
+        }
+        .seo-footer h1 { font-size: 18px; color: #ffffff; margin-bottom: 5px; }
+        .seo-footer h2 { font-size: 16px; color: #ffffff; margin-bottom: 5px; }
     </style>
 </head>
 <body>
 
-
 <script>
-    // 화면 너비 체크는 빼고, 기기 정보(UserAgent)만 확인
+
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         window.location.href = "indexm.html";
     }
 </script>
 
-
-
-
-<div style="display: none;">
-  <h1>대전 인테리어 그래픽 캐릭터 게임 편집디자인 모션그래픽 영상 학원</h1>
-  <p>대전 인테리어 그래픽 캐릭터 게임 편집디자인 모션그래픽 영상 학원</p>
-  
-  <h2>대전 인테리어 그래픽 캐릭터 게임 편집디자인 모션그래픽 영상 학원</h2>
-  <p>대전 서구 탄방동 위치 지역</p>
-</div>
+<footer class="seo-footer">
+    <h1>제임스 디자인 그래픽 캐릭터 인테리어 IoT 편집디자인 아카데미 (교육 대전) </h1>
+    <p>대전 서구 탄방동에 위치한 실무 중심의 <strong>대전 인테리어 건축 편집디자인 캐릭터 애니메이션·3D 광고 영상 그래픽 VR AR 학원</strong>입니다.</p>
+    <p>Unreal Engine, Arnold 렌더 기반의 취업 포트폴리오 과정을 운영합니다.</p>
+    
+    <h2>대전 인테리어 그래픽 캐릭터 게임 편집디자인 모션그래픽 영상 학원</h2>
+    <p>대전 인테리어 그래픽 캐릭터 게임 편집디자인 모션그래픽 영상 학원 및 대전 서구 탄방동 위치 지역 안내</p>
+</footer>
 
     <script type="importmap">
         {
@@ -43,11 +63,6 @@
     </script>
 
     <script type="module" src="js/load_html_img.js"></script>
-
-
     <script type="module" src="js/load3d.js"></script>
-    <!-- <script src="js/pc_body.js"></script> -->
-
-    
-</body>
+    </body>
 </html>
