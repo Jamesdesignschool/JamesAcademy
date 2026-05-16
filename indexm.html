@@ -17,7 +17,7 @@
         body {
             margin: 0;
             overflow: hidden;
-            background-color: #f0f0f0;
+            background-color: #fcfcfc;
             width: 412px;
         }
 
@@ -40,13 +40,18 @@
             width: 370px;
             padding: 20px;
             box-sizing: border-box;
-            color: #ffffff; /* 흰색 글씨로 설정하여 캔버스 뒤에서 숨김 처리 */
+            
+            /* [수정] #fcfcfc 배경 위에서 사람 눈에 안 보이고 구글 봇만 읽도록 미세 투명도 설정 */
+            color: rgba(252, 252, 252, 0.05); 
+            
             z-index: 1; /* 캔버스(z-index: 10)보다 낮게 설정 */
             font-family: sans-serif;
             line-height: 1.5;
         }
-        .seo-content-mobile h2 { font-size: 18px; color: #ffffff; margin-top: 0; }
-        .seo-content-mobile h3 { font-size: 15px; color: #ffffff; margin-top: 15px; }
+        /* 하위 제목 및 텍스트들이 상위의 rgba 투명도 색상을 그대로 상속받도록 수정 */
+        .seo-content-mobile h2, .seo-content-mobile h3 { color: inherit; margin-top: 0; }
+        .seo-content-mobile h2 { font-size: 18px; }
+        .seo-content-mobile h3 { font-size: 15px; margin-top: 15px; }
         .seo-content-mobile ul { padding-left: 15px; font-size: 13px; }
         .seo-content-mobile p { font-size: 13px; }
 
@@ -55,14 +60,17 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            color: #ffffff;
+            
+            /* [수정] 푸터 글씨도 캔버스 로딩 전이나 뒤에서 완전히 숨겨지도록 동일하게 투명도 처리 */
+            color: rgba(252, 252, 252, 0.05); 
+            
             font-size: 14px;
             z-index: 2;
             font-family: sans-serif;
             width: 370px;
         }
-        .seo-footer-mobile h1 { font-size: 18px; color: #ffffff; margin-bottom: 5px; }
-        .seo-footer-mobile p { font-size: 13px; }
+        .seo-footer-mobile h1 { font-size: 18px; color: inherit; margin-bottom: 5px; }
+        .seo-footer-mobile p { font-size: 13px; color: inherit; }
     </style>
 </head>
 <body>
