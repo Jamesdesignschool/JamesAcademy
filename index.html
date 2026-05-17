@@ -14,14 +14,12 @@
             background-color: #fcfcfc; 
         }
 
-        /* 3D 캔버스를 맨 위로 올립니다 */
         canvas { 
             display: block; 
             position: relative;
             z-index: 10; 
         }
 
-        /* [SEO 개선] 구글 로봇 전용 본문 텍스트 영역 */
         .seo-content {
             position: absolute;
             top: 0;
@@ -29,8 +27,8 @@
             width: 100%;
             padding: 40px;
             box-sizing: border-box;
-            color: #ffffff; /* 배경과 같은 흰색으로 설정하여 캔버스 뒤에서 숨김 처리 */
-            z-index: 1; /* 캔버스(z-index: 10)보다 낮게 설정하여 뒤로 숨김 */
+            color: #ffffff;
+            z-index: 1;
             font-family: sans-serif;
             line-height: 1.6;
         }
@@ -38,7 +36,6 @@
         .seo-content h3 { font-size: 18px; color: #ffffff; margin-top: 20px; }
         .seo-content ul { padding-left: 20px; }
 
-        /* 기존 푸터 스타일 유지 (필요에 따라 z-index 조정) */
         .seo-footer {
             position: absolute; 
             bottom: 50px; 

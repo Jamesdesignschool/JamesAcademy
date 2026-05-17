@@ -10,7 +10,6 @@
 
     <style>
         html {
-            /* 화면 너비 / 412 = 스케일 비율 자동 계산 */
             font-size: calc(100vw / 412 * 16px); /* 선택사항 */
         }
 
@@ -21,7 +20,6 @@
             width: 412px;
         }
 
-        /* 3D 캔버스를 최상단 레이어로 설정 */
         canvas {
             outline: none;
             -webkit-tap-highlight-color: transparent;
@@ -32,7 +30,6 @@
             z-index: 10; /* 본문 및 푸터 텍스트보다 위로 올림 */
         }
 
-        /* [SEO 개선] 모바일 구글 로봇 전용 본문 텍스트 영역 */
         .seo-content-mobile {
             position: absolute;
             top: 0;
@@ -41,27 +38,23 @@
             padding: 20px;
             box-sizing: border-box;
             
-            /* [수정] #fcfcfc 배경 위에서 사람 눈에 안 보이고 구글 봇만 읽도록 미세 투명도 설정 */
             color: rgba(252, 252, 252, 0.05); 
             
-            z-index: 1; /* 캔버스(z-index: 10)보다 낮게 설정 */
+            z-index: 1;
             font-family: sans-serif;
             line-height: 1.5;
         }
-        /* 하위 제목 및 텍스트들이 상위의 rgba 투명도 색상을 그대로 상속받도록 수정 */
         .seo-content-mobile h2, .seo-content-mobile h3 { color: inherit; margin-top: 0; }
         .seo-content-mobile h2 { font-size: 18px; }
         .seo-content-mobile h3 { font-size: 15px; margin-top: 15px; }
         .seo-content-mobile ul { padding-left: 15px; font-size: 13px; }
         .seo-content-mobile p { font-size: 13px; }
 
-        /* 기존 푸터 스타일 및 레이어 유지 */
         .seo-footer-mobile {
             position: absolute;
             bottom: 20px;
             left: 20px;
             
-            /* [수정] 푸터 글씨도 캔버스 로딩 전이나 뒤에서 완전히 숨겨지도록 동일하게 투명도 처리 */
             color: rgba(252, 252, 252, 0.05); 
             
             font-size: 14px;
