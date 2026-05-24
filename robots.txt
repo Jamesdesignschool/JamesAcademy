@@ -1,11 +1,4 @@
 User-agent: *
-Allow: /$
-Allow: /index.html
-Disallow: /portfolio
-Disallow: /main
-Disallow: /vr_ar
-Disallow: /editorial
-Disallow: /character
-Disallow: /interior
+Allow: /
 
 Sitemap: https://jamesacademy.co.kr/sitemap.xml
