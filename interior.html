@@ -14,11 +14,14 @@
 
 
 <script>
-  // 사용자가 브라우저 주소창에 직접 /interior.html 을 치고 들어왔거나 
-  // 구글 검색 결과를 클릭해서 '단독 페이지'로 들어온 경우를 감지합니다.
-  if (window.self === window.top && window.location.pathname.includes('interior.html')) {
-    // 그 즉시 메인 페이지로 주소를 이동시킵니다.
-    window.location.href = "https://jamesacademy.co.kr/";
+  // 1. 단독 페이지로 접속했는지 확인 (iframe 내부 로드가 아닐 때)
+  if (window.self === window.top) {
+    // 2. 현재 주소창(href)에 메인 주소가 정확히 일치하지 않는 경우 모두 튕겨냅니다.
+    // 이렇게 하면 pathname에 상관없이 단독 접속 시 무조건 메인으로 갑니다.
+    if (window.location.href !== "https://jamesacademy.co.kr/" && 
+        window.location.href !== "https://jamesacademy.co.kr") {
+      window.location.replace("https://jamesacademy.co.kr/");
+    }
   }
 </script>
 
