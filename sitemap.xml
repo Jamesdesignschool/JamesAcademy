@@ -2,43 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jamesacademy.co.kr/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://jamesacademy.co.kr/index.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <priority>0.8</priority>
   </url>
 
+
+
+
+<url>
+    <loc>https://jamesacademy.co.kr/z_interior.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+
+
+
+
   <url>
     <loc>https://jamesacademy.co.kr/main.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://jamesacademy.co.kr/vr_ar.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://jamesacademy.co.kr/editorial.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://jamesacademy.co.kr/character.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://jamesacademy.co.kr/interior.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-06-24</lastmod>
     <priority>0.8</priority>
   </url>
 
